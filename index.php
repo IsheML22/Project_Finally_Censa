@@ -66,7 +66,7 @@
         <table class="table"borde="1">
             <thead>
                 <tr>
-                    <th>Temporada</th>
+                <th>Temporada</th>
                     <th>Club</th>
                     <th>Goles</th>
                     <th>Asistencias</th>
@@ -111,29 +111,81 @@
 <br>
 <br>
 
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/images/carrusel 1.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/images/cr7 2.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/images/portu.png" class="d-block w-100" alt="...">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  LISTAR REGISTRO
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <?php
+          include_once "Controlador/conexion.php";
+          $conexion = new Conexion();
+          $conexion = $conexion->conectar();
+          if ($conexion){
+            $sql = "SELECT * FROM registropersonas";
+            $consulta = $conexion->prepare($sql);
+            $consulta->execute();
+            $i = 0;
+            while ($fila=$consulta-> fetch(PDO::FETCH_ASSOC)){
+              $i += 1;
+          
+        ?>
+
+      <table class="table caption-top">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+ 
+  </tbody>
+
+  <?php
+    }}
+    else {
+      echo "Error al conectar a la base de datos.";
+    }
+  ?>
+
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning">Guardar Cambios</button>
+      </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
-<br>
-<br>
+
+
 
 <form action="Controlador/registro.php" method="POST" class="container d-flex justify-content-center align-items-center" style="height: 85vh;">
   <div class="col-4">
