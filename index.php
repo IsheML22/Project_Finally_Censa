@@ -121,7 +121,7 @@
 
   <div class="text-center mb-4">
     <button type="button" class="btn btn-warning btn-lg fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      LISTAR REGISTRO
+      LISTA DE REGISTRO
     </button>
   </div>
 
@@ -254,6 +254,38 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+  <script>
+  document.querySelectorAll('.btnEliminar').forEach(button => {
+    button.addEventListener('click', function () {
+      const id = this.dataset.id;
+
+      if (confirm('¿Estás seguro de eliminar este registro?')) {
+        fetch('Controlador/eliminar.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: `ID_Registro=${id}`
+        })
+        .then(res => res.text())
+        .then(response => {
+          if (response.includes('success')) {
+            // Eliminar la fila de la tabla visualmente
+            this.closest('tr').remove();
+          } else {
+            alert('Error al eliminar el registro.');
+            console.log(response); // Para depurar si hay errores
+          }
+        })
+        .catch(error => {
+          alert('Error de red.');
+          console.error(error);
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
