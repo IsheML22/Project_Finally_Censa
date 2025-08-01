@@ -1,4 +1,6 @@
-﻿# Mi nuevo proyecto
+Mi proyecto "Project_Finally_Censa" es una aplicación web que desarrollé utilizando PHP, MySQL y Bootstrap. El objetivo principal es gestionar un censo de personas mediante un sistema CRUD (Crear, Leer, Actualizar y Eliminar). Implementé formularios para registrar usuarios, editar sus datos, eliminarlos y mostrarlos en una tabla organizada. Utilicé PDO para una conexión segura con la base de datos y diseñé una interfaz intuitiva con Bootstrap. Este proyecto me permitió aplicar y reforzar conocimientos en desarrollo web y bases de datos, además de brindarme una base sólida para crear sistemas más completos de gestión de información.
+ 
+ # Mi nuevo proyecto
 ## HERLYS MANES
 
 ```sql
